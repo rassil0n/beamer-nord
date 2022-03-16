@@ -1,0 +1,60 @@
+\newcounter{realframenumber}
+
+%{{{ FRAMETITLE
+\defbeamertemplate*{frametitle}{hawh}{
+        \vspace{-1pt}%
+        \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.55cm,rightskip=0.55cm,sep=0.1cm]{frametitle}
+			\strut\insertframetitle\hfill
+			\strut
+        \end{beamercolorbox}
+}
+%}}}
+%{{{ PROGRESSBAR
+\RequirePackage{appendixnumberbeamer} % Don't number appendix frames.
+\makeatletter
+\newlength{\custom@progressinheadfoot}
+\setbeamertemplate{progress bar in head/foot}{
+    \ifnum\mainend<0% From package appendixnumberbeamer.
+    \nointerlineskip
+    \setlength{\custom@progressinheadfoot}{
+        \paperwidth * \ratio{\insertframenumber pt}{\inserttotalframenumber pt}
+    }
+    \begin{beamercolorbox}[wd=\paperwidth]{progress bar in head/foot}
+        \begin{tikzpicture}
+			\draw[bg, fill=bg] (0,0) rectangle (\paperwidth, 2pt);% node[anchor=north east] {\bfseries\color{hawhblue}\inserttotalframenumber};
+			\draw[fg, fill=fg] (0,0) rectangle (\custom@progressinheadfoot, 2pt);% node[pos=.5] {\bfseries\color{background}\insertframenumber};
+        \end{tikzpicture}
+    \end{beamercolorbox}
+	\fi
+}
+\addtobeamertemplate{footline}{}{
+    \usebeamertemplate*{progress bar in head/foot}
+}
+%}}}
+%{{{ FOCUSFRAME
+\providebool{focus@standout}
+\define@key{beamerframe}{focus}[true]{
+    \booltrue{focus@standout}
+    \begingroup
+        \setkeys{beamerframe}{plain, noframenumbering}
+        \setbeamertemplate{background canvas}[focusframe]
+        \setbeamertemplate{frametitle}[plain]
+
+        \setkeys{beamerframe}{c}
+        \centering
+		\usebeamerfont{focusframe}
+        \usebeamercolor[bg]{frametitle}
+		\setbeamertemplate{footline}[none]
+}
+
+
+\apptocmd{\beamer@reseteecodes}{
+    \ifbool{focus@standout}
+    {
+        \endgroup
+        \boolfalse{focus@standout}
+    }{}
+}{}{}
+%}}}
+
+% vim:foldmethod=marker:foldlevel=0

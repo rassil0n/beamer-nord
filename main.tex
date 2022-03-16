@@ -1,0 +1,54 @@
+\documentclass{beamer}
+\usepackage[]{pgfpages}
+\usepackage[german]{babel}
+\input{config/listing.tex}
+
+% set proper informations for pdf-file
+\hypersetup{
+	pdftitle=beamer-nord,
+	pdfauthor=rassil0n,
+	pdfsubject=presentation,
+	hidelinks, % kill ugly link boxes
+}
+
+% set theme
+\usetheme{nord}
+
+% kill navigation symbols in presentation
+\beamertemplatenavigationsymbolsempty
+
+\title{beamer-nord}
+\subtitle{A \LaTeX-beamer-theme with the nord color palette}
+\author{rassil0n}
+\date{\today}
+
+\begin{document}
+% titlepage
+\begin{frame}[plain]
+	\maketitle
+\end{frame}
+
+% TOC
+\begin{frame}{Roadmap}
+	\tableofcontents
+\end{frame}
+
+% presentation
+\input{slides/demo.tex}
+
+ % appendix not to in toc
+\appendix
+% titlepage as ending
+\begin{frame}[plain]
+	\maketitle
+\end{frame}
+
+\section{Appendix}
+
+\input{slides/appendix.tex}
+\begin{frame}{Quellen}
+	\nocite{*}
+	\bibliography{beamer.bib}
+	\bibliographystyle{amsalpha}
+\end{frame}
+\end{document}

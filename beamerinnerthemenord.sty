@@ -1,0 +1,156 @@
+%{{{ CUSTOMIZE STRUCTURE ELEMENTS
+\setbeamertemplate{section in toc}[square]
+\setbeamertemplate{subsection in toc}[square]
+
+\setbeamertemplate{itemize items}[square]
+\setbeamertemplate{itemize subitem}[triangle]
+%}}}
+%{{{ TITLE PAGE
+\defbeamertemplate*{title page}{lfst}{
+
+    \vspace{-1.65\baselineskip}
+    \begin{minipage}[b][0.35\paperheight]{\textwidth}
+        \vspace{\baselineskip}
+        \usebeamerfont{title}
+        \usebeamercolor[fg]{title}
+        \inserttitle
+    \end{minipage}
+
+    \begin{minipage}[t][0.1\paperheight]{\textwidth}
+        \usebeamerfont{subtitle}
+        \usebeamercolor[fg]{title}
+        \insertsubtitle
+    \end{minipage}
+
+    {\vfuzz=9999pt\vbox to 50pt {
+		\kern 1mm \color{NordRed}{\hrule width \hsize height 1pt} \kern .4mm \color{NordYellow}{\hrule width \hsize height 1pt} \kern .4mm \color{NordBrightBlue}{\hrule width \hsize height 1pt}
+		}}
+
+    \begin{minipage}[t]{\textwidth}
+        \usebeamerfont{author}
+        \insertauthor
+    \end{minipage}
+
+    \begin{minipage}[t]{\textwidth}
+        \usebeamerfont{institute}
+        \insertinstitute
+    \end{minipage}
+
+    \vspace*{\baselineskip}
+    \begin{minipage}[t]{\textwidth}
+        \usebeamerfont{date}
+        \insertdate
+    \end{minipage}
+
+	\raggedleft
+        \inserttitlegraphic
+   	\vspace*{0pt plus 100fill}
+
+    \addtocounter{framenumber}{-1}
+    \addtocounter{realframenumber}{-1}}
+%}}}
+%{{{ SECTION PAGE
+\defbeamertemplate*{section page}{lfst}{
+	\begin{minipage}[b][0.45\paperheight]{\textwidth}
+        \usebeamerfont{sectiontitle}
+        \usebeamercolor[bg]{frametitle}
+        \let\hyperlink\@secondoftwo\insertsection
+		\strut
+		\kern 1mm \color{NordYellow}{\hrule width \hsize height 1pt}
+	\end{minipage}
+
+    \begin{minipage}[t][0.5\paperheight]{\textwidth}
+        \usebeamerfont{subsectiontitle}
+        \usebeamercolor[bg]{frametitle}
+        \insertsubsection
+    \end{minipage}
+	}
+
+\AtBeginSection[]{
+    \begin{frame}[plain, noframenumbering]{}
+        \sectionpage
+    \end{frame}}
+%}}}
+%{{{ SUBSECTION PAGE
+\defbeamertemplate*{subsection page}{focus}{%
+	\begin{minipage}[b][0.45\paperheight]{\textwidth}
+        \usebeamerfont{sectiontitle}
+        \usebeamercolor[bg]{frametitle}
+        \let\hyperlink\@secondoftwo\insertsection
+		\strut
+		\kern 1mm \color{NordYellow}{\hrule width \hsize height 1pt}
+	\end{minipage}
+
+    \begin{minipage}[t][0.5\paperheight]{\textwidth}
+        \usebeamerfont{subsectiontitle}
+        \usebeamercolor[fg]{normal text}
+        \insertsubsection
+    \end{minipage}
+}
+
+\AtBeginSubsection[]{
+    \begin{frame}[plain, noframenumbering]{}
+        \subsectionpage
+    \end{frame}
+}
+%}}}
+
+%{{{ DEFAULT BLOCK
+\setbeamertemplate{block begin}{
+\vskip.75ex
+  \begin{beamercolorbox}[center,leftskip=1em,colsep*=.75ex]{block title}
+    \usebeamerfont*{block title}
+     \insertblocktitle
+	\strut
+  \end{beamercolorbox}
+
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}
+  \usebeamerfont{block body}
+
+  \begin{beamercolorbox}[leftskip=1em,colsep*=.75ex,sep=0.5ex,vmode]{block body}
+    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}
+  }
+  \setbeamertemplate{block end}{
+  \end{beamercolorbox}
+}
+%}}}
+%{{{ ALERTED BLOCK
+\setbeamertemplate{block alerted begin}{
+\vskip.75ex
+  \begin{beamercolorbox}[center,leftskip=1em,colsep*=.75ex]{block alerted title}
+    \usebeamerfont*{block title}
+     \insertblocktitle
+	\strut
+  \end{beamercolorbox}
+
+  {\ifbeamercolorempty[bg]{block alerted body}{}{\nointerlineskip\vskip-0.5pt}}
+  \usebeamerfont{block body}
+
+  \begin{beamercolorbox}[leftskip=1em,colsep*=.75ex,sep=0.5ex,vmode]{block alerted body}
+    \ifbeamercolorempty[bg]{block alerted body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}
+  }
+  \setbeamertemplate{block alerted end}{
+  \end{beamercolorbox}
+}
+%}}}
+%{{{ EXAMPLE BLOCK
+\setbeamertemplate{block example begin}{
+\vskip.75ex
+  \begin{beamercolorbox}[center,leftskip=1em,colsep*=.75ex]{block example title}
+    \usebeamerfont*{block title}
+     \insertblocktitle
+	\strut
+  \end{beamercolorbox}
+
+  {\ifbeamercolorempty[bg]{block example body}{}{\nointerlineskip\vskip-0.5pt}}
+  \usebeamerfont{block body}
+
+  \begin{beamercolorbox}[leftskip=1em,colsep*=.75ex,sep=0.5ex,vmode]{block example body}
+    \ifbeamercolorempty[bg]{block example body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}
+  }
+  \setbeamertemplate{block example end}{
+  \end{beamercolorbox}
+}
+%}}}
+
+% vim:foldmethod=marker:foldlevel=0

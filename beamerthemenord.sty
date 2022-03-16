@@ -1,0 +1,40 @@
+% required packages
+\RequirePackage{fontspec}
+\RequirePackage{pdfpc}
+\RequirePackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,backgrounds,fit,decorations.markings}
+
+\RequirePackage{hyperref}
+
+% setup colors
+\input{config/nordcolors.tex}
+
+
+% cite
+\RequirePackage{epigraph}
+\setlength{\epigraphwidth}{\textwidth}
+\let\originalepigraph\epigraph
+\renewcommand\epigraph[2]{\originalepigraph{\textit{#1}}{#2}}
+
+% general settings
+\setbeamertemplate{enumerate items}[square]
+\setbeamersize{text margin left=0.75cm, text margin right=0.75cm}
+\setlength{\leftmargini}{0.75cm}
+\DeclareOptionBeamer{numbering}{%
+    \PassOptionsToPackage{numbering=#1}{beamerouterthemelfst}
+}
+
+
+% setup fonts
+\setmainfont{Noto Serif}
+\setsansfont{Noto Sans}
+\setmonofont{Noto Mono}
+\renewcommand*\familydefault{\sfdefault}
+
+\ProcessOptionsBeamer
+
+% set theme
+\usecolortheme{nord}
+\usefonttheme{nord}
+\useinnertheme{nord}
+\useoutertheme{nord}
